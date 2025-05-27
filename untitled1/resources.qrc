@@ -1,0 +1,37 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>landing.jpg</file>
+        <file>username.jpg</file>
+        <file>gallery.jpg</file>
+        <file>agent1.png</file>
+        <file>agent2.png</file>
+        <file>agent3.png</file>
+        <file>agent4.png</file>
+        <file>agent5.png</file>
+        <file>agent6.png</file>
+        <file>agent7.png</file>
+        <file>boards.jpg</file>
+        <file>gameplay.jpg</file>
+        <file>border.png</file>
+        <file>next.png</file>
+        <file>prev.png</file>
+        <file>home.jpg</file>
+        <file>board1.jpg</file>
+        <file>board2.jpg</file>
+        <file>board3.jpg</file>
+        <file>board5.jpg</file>
+        <file>board6.jpg</file>
+        <file>board7.jpg</file>
+        <file>board8.jpg</file>
+    </qresource>
+    <qresource prefix="/boards">
+        <file>board1.txt</file>
+        <file>board2.txt</file>
+        <file>board3.txt</file>
+        <file>board4.txt</file>
+        <file>board5.txt</file>
+        <file>board6.txt</file>
+        <file>board7.txt</file>
+        <file>board8.txt</file>
+    </qresource>
+</RCC>
