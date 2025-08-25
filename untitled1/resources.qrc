@@ -1,18 +1,8 @@
 <RCC>
     <qresource prefix="/images">
         <file>landing.jpg</file>
-        <file>username.jpg</file>
-        <file>gallery.jpg</file>
-        <file>agent1.png</file>
-        <file>agent2.png</file>
-        <file>agent3.png</file>
-        <file>agent4.png</file>
-        <file>agent5.png</file>
-        <file>agent6.png</file>
-        <file>agent7.png</file>
-        <file>boards.jpg</file>
         <file>gameplay.jpg</file>
-        <file>border.png</file>
+        <file>cell-ground.png</file>
         <file>next.png</file>
         <file>prev.png</file>
         <file>home.jpg</file>
@@ -23,6 +13,39 @@
         <file>board6.jpg</file>
         <file>board7.jpg</file>
         <file>board8.jpg</file>
+        <file>cell-rock.png</file>
+        <file>cell-water.png</file>
+        <file>angus.jpg</file>
+        <file>billy.jpg</file>
+        <file>boi.jpg</file>
+        <file>bunka.jpg</file>
+        <file>colonelbaba.jpg</file>
+        <file>death.jpg</file>
+        <file>duraham.jpg</file>
+        <file>eloi.jpg</file>
+        <file>elsa.jpg</file>
+        <file>frost.jpg</file>
+        <file>kabu.jpg</file>
+        <file>kanar.jpg</file>
+        <file>khan.jpg</file>
+        <file>medusa.jpg</file>
+        <file>rajakal.jpg</file>
+        <file>rambu.jpg</file>
+        <file>reketon.jpg</file>
+        <file>sabrina.jpg</file>
+        <file>salih.jpg</file>
+        <file>sanka.jpg</file>
+        <file>tusk.jpg</file>
+        <file>mainbg.jpg</file>
+        <file>gallery1.jpg</file>
+        <file>gallery3.jpg</file>
+        <file>gallery4.jpg</file>
+        <file>gallery5.jpg</file>
+        <file>gallery6.jpg</file>
+        <file>gallery7.jpg</file>
+        <file>gallery2.jpg</file>
+        <file>cell-attacker.png</file>
+        <file>cell-defender.png</file>
     </qresource>
     <qresource prefix="/boards">
         <file>board1.txt</file>
@@ -33,5 +56,9 @@
         <file>board6.txt</file>
         <file>board7.txt</file>
         <file>board8.txt</file>
+        <file>gallery1.jpg</file>
+    </qresource>
+    <qresource prefix="/neighbors">
+        <file>celldata.txt</file>
     </qresource>
 </RCC>
