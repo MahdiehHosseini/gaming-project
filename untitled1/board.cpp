@@ -1,8 +1,8 @@
-#include "board.h"
+#include "Board.h"
 
-board* board::instance = nullptr;
+Board* Board::instance = nullptr;
 
-board::board() {
+Board::Board() {
     id = 0;
     data.clear();
 }

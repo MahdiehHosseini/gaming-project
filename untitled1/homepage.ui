@@ -23,9 +23,9 @@
    <widget class="QPushButton" name="galleryPushButton">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>290</y>
-      <width>101</width>
+      <x>460</x>
+      <y>320</y>
+      <width>291</width>
       <height>41</height>
      </rect>
     </property>
@@ -46,15 +46,15 @@ font-size: 20px;
 border: 0;</string>
     </property>
     <property name="text">
-     <string>GALLERY</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="gamePushButton">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>290</y>
-      <width>101</width>
+      <x>460</x>
+      <y>260</y>
+      <width>291</width>
       <height>41</height>
      </rect>
     </property>
@@ -75,16 +75,16 @@ font-size:  30px;
 border: 0;</string>
     </property>
     <property name="text">
-     <string>play</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="backgroundHomeLabel">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>10</y>
+      <y>-70</y>
       <width>961</width>
-      <height>381</height>
+      <height>481</height>
      </rect>
     </property>
     <property name="text">

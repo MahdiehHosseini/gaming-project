@@ -10,101 +10,116 @@ gameplayPage::gameplayPage(QWidget *parent)
 {
     ui->setupUi(this);
 
-    ui->agentHash2->setEnabled(false);
-    ui->agent2->setEnabled(false);
-    ui->agentTilda2->setEnabled(false);
+    signalMapper = new QSignalMapper(this);
+    connect(ui->angus, SIGNAL(clicked()), signalMapper, SLOT(map()));
+    connect(ui->billy, SIGNAL(clicked()), signalMapper, SLOT(map()));
+    signalMapper->setMapping(ui->angus, "angus");
+    signalMapper->setMapping(ui->billy, "billy");
+    connect(signalMapper, SIGNAL(mappedString(const QString&)),
+            this, SLOT(onAgentButtonClicked(const QString&)));
 
     render();
 
 }
 
-QVector<cell> cells;
+QVector<Cell> cells;
 
 void gameplayPage::render() {
 
     cells.clear();
 
-    for (const QVariantMap &cellData : board::getInstance()->getData()) {
-        int cellId = cellData["cellID"].toInt();
-        int agentId = cellData["agentID"].toInt();
+    for (const QVariantMap &cellData : Board::getInstance()->getData()) {
+        int cellId = cellData["CellID"].toInt();
+        Cell::Type cellType = static_cast<Cell::Type>(cellData["CellType"].value<int>());
 
-        cells.append(cell(cellId, agentId));
+        cells.append(Cell(cellId, cellType));
     }
 
-    for (cell &cell : cells) {
+    for (Cell &cell : cells) {
         QString buttonName = "cell" + QString::number(cell.getCellId());
         QPushButton *button = this->findChild<QPushButton*>(buttonName);
         connect(button, &QPushButton::clicked, this, &gameplayPage::on_anyCell_clicked);
-        if(cell.getAgent() != -1){
-            button->setIcon(QIcon(QString(":/images/agent%1.png").arg(cell.getAgent())));
+        if(cell.getType() != "ground"){
+            QString iconPath = QString(":/images/cell-%1.png").arg(cell.getType());
+            button->setIcon(QIcon(iconPath));
+            button->setProperty("iconPath", iconPath);
         }
     }
 };
 
-int currentAgent = -1;
-
+QString currentAgent = "";
 int currentCell = 0;
 
 
-void setAgent(int newAgentID){
-    currentAgent = newAgentID;
+void setAgent(QString newAgent){
+    currentAgent = newAgent;
 }
 
 // setting agent
-void gameplayPage::on_agentHash1_clicked()
+void gameplayPage::onAgentButtonClicked(const QString& agentName)
 {
-    setAgent(3);
+    setAgent(agentName);
 }
 
-void gameplayPage::on_agentTilda1_clicked()
-{
-    setAgent(4);
-}
-
-void gameplayPage::on_agent1_clicked()
-{
-    setAgent(1);
-}
-
-void gameplayPage::on_agent2_clicked()
-{
-    setAgent(2);
-}
-
-void gameplayPage::on_agentHash2_clicked()
-{
-    setAgent(3);
-}
-
-void gameplayPage::on_agentTilda2_clicked()
-{
-    setAgent(4);
-}
-
-bool userTurn = false;
+bool attackerTurn = false;
+bool isFirstMove = true;
 
 void gameplayPage::setCell(int newCellID){
-    if(currentAgent != -1){
-        currentCell = newCellID;
-        ui->gameError->setText("");
+    if(currentAgent != ""){
         QString buttonName = "cell" + QString::number(newCellID);
         QPushButton *button = this->findChild<QPushButton *>(buttonName);
-        button->setIcon(QIcon(QString(":/images/agent%1.png").arg(currentAgent)));
+        ui->gameError->setText("");
 
-        ui->agentHash2->setEnabled(!userTurn);
-        ui->agent2->setEnabled(!userTurn);
-        ui->agentTilda2->setEnabled(!userTurn);
+        QIcon icon = button->icon();
+        QString iconPath = button->property("iconPath").toString();
 
-        ui->agentHash1->setEnabled(userTurn);
-        ui->agent1->setEnabled(userTurn);
-        ui->agentTilda1->setEnabled(userTurn);
+        if (iconPath.contains("rock")) {
+            ui->gameError->setText("this agent can not be placed on rock cell");
+            return;
+        }
 
-        userTurn = !userTurn;
-        currentAgent = -1;
+        if(isFirstMove) {
+            if(attackerTurn && !iconPath.contains("attacker")) {
+                ui->gameError->setText("please place the agent on attacker cells");
+                return;
+            }
+            if(!attackerTurn && !iconPath.contains("defender")) {
+                ui->gameError->setText("please place the agent on defender cells");
+                return;
+            }
+        }
+
+        currentCell = newCellID;
+        QString newIconPath = QString(":/images/%1.jpg").arg(currentAgent);
+        button->setIcon(QIcon(newIconPath));
+        button->setProperty("iconPath", newIconPath);
+
+        if(isFirstMove) {
+            if(attackerTurn) {
+                static int player1Placed = 0;
+                player1Placed++;
+                if(player1Placed >= 6) {
+                    attackerTurn = false;
+                }
+            } else {
+                static int player2Placed = 0;
+                player2Placed++;
+                if(player2Placed >= 6) {
+                    isFirstMove = false;
+                }
+            }
+        } else {
+            attackerTurn = !attackerTurn;
+        }
+
+        ui->billy->setEnabled(attackerTurn);
+        ui->angus->setEnabled(attackerTurn);
+        currentAgent = "";
     } else {
-        ui->gameError->setText("please choose an agent");
+        ui->gameError->setText("please choose an agent first");
     }
-};
+}
+
 
 //setting cell
 void gameplayPage::on_anyCell_clicked()

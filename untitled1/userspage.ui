@@ -86,7 +86,7 @@ border-radius: 25px;</string>
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources.qrc">:/images/username.jpg</pixmap>
+     <pixmap resource="resources.qrc">:/images/mainbg.jpg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>

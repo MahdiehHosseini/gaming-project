@@ -1,7 +1,10 @@
 #ifndef GAMEPLAYPAGE_H
 #define GAMEPLAYPAGE_H
 
+#include "agent.h"
+
 #include <QMainWindow>
+#include <QSignalMapper>
 
 namespace Ui {
 class gameplayPage;
@@ -18,16 +21,12 @@ public:
     ~gameplayPage();
 
 private slots:
-    void on_agentHash1_clicked();
-    void on_agentTilda1_clicked();
-    void on_agent1_clicked();
-    void on_agent2_clicked();
-    void on_agentHash2_clicked();
-    void on_agentTilda2_clicked();
+    void onAgentButtonClicked(const QString& agentName);
     void on_anyCell_clicked();
 
 private:
     Ui::gameplayPage *ui;
+    QSignalMapper *signalMapper;
 };
 
 #endif // GAMEPLAYPAGE_H

@@ -71,7 +71,7 @@ public:
         QFont font2;
         font2.setPointSize(14);
         backgroundUsersLabel->setFont(font2);
-        backgroundUsersLabel->setPixmap(QPixmap(QString::fromUtf8(":/images/username.jpg")));
+        backgroundUsersLabel->setPixmap(QPixmap(QString::fromUtf8(":/images/mainbg.jpg")));
         backgroundUsersLabel->setScaledContents(true);
         user2LineEdit = new QLineEdit(centralwidget);
         user2LineEdit->setObjectName("user2LineEdit");

@@ -54,9 +54,9 @@ void gameBoardPage::on_prevBoardButton_clicked(){
 void gameBoardPage::on_board_clicked()
 {
 
-    QVector<QVariantMap> newData = board::getInstance()->parseBoards(1 ,QString(":/boards/board%1.txt").arg(currentBoardIndex));
+    QVector<QVariantMap> newData = Board::getInstance()->parseBoards(1 ,QString(":/boards/board%1.txt").arg(currentBoardIndex));
 
-    board::getInstance()->setData(currentBoardIndex, newData);
+    Board::getInstance()->setData(currentBoardIndex, newData);
 
     //open game page
     gameplayPage *gameplayPage = new class gameplayPage(this);

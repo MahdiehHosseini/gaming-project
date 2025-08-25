@@ -23,8 +23,8 @@ private slots:
 private:
     Ui::usersPage *ui;
 
-    QVector<agent*> agents;
-    QVector<cell*> board;
+    QVector<Agent*> Agents;
+    QVector<Cell*> Board;
 
     void initializeBoard();
     void renderBoard();

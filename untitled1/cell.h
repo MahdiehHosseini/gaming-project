@@ -3,35 +3,31 @@
 
 #include <QString>
 
-class cell
+class Cell
 {
-private:
-    int id, agentId;
 public:
-    cell(int id, int agentID = -1){
-        this->id = id;
-        setAgent(agentID);
+    enum Type {
+        Attacker,
+        Defender,
+        Water,
+        Rock,
+        Ground
     };
 
-    int getAgent(){
-        return this->agentId;
-    };
+    Cell(int id, Type cellType = Ground);
 
-    QString info(){
-        return QString("id: %1, agent: %2").arg(this->id).arg(this->agentId);
-    };
+    int getAgent() const;
+    int getCellId() const;
+    QString info() const;
+    QString getType() const;
 
-    int getCellId(){
-        return this->id;
-    };
+    void setAgent(int agentId);
+    void removeAgent();
 
-    void setAgent(int agentId){
-        this->agentId = agentId;
-    };
-
-    void removeAgent(){
-        this->agentId = -1;
-    };
+private:
+    int ID;
+    int AgentId;
+    Type CellType;
 };
 
 #endif // CELL_H

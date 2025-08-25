@@ -41,7 +41,7 @@ public:
         centralwidget->setObjectName("centralwidget");
         galleryPushButton = new QPushButton(centralwidget);
         galleryPushButton->setObjectName("galleryPushButton");
-        galleryPushButton->setGeometry(QRect(30, 290, 101, 41));
+        galleryPushButton->setGeometry(QRect(460, 320, 291, 41));
         QFont font;
         font.setFamilies({QString::fromUtf8("Terminal")});
         font.setWeight(QFont::ExtraBold);
@@ -53,7 +53,7 @@ public:
 "border: 0;"));
         gamePushButton = new QPushButton(centralwidget);
         gamePushButton->setObjectName("gamePushButton");
-        gamePushButton->setGeometry(QRect(160, 290, 101, 41));
+        gamePushButton->setGeometry(QRect(460, 260, 291, 41));
         gamePushButton->setFont(font);
         gamePushButton->setCursor(QCursor(Qt::CursorShape::PointingHandCursor));
         gamePushButton->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
@@ -62,7 +62,7 @@ public:
 "border: 0;"));
         backgroundHomeLabel = new QLabel(centralwidget);
         backgroundHomeLabel->setObjectName("backgroundHomeLabel");
-        backgroundHomeLabel->setGeometry(QRect(0, 10, 961, 381));
+        backgroundHomeLabel->setGeometry(QRect(0, -70, 961, 481));
         backgroundHomeLabel->setPixmap(QPixmap(QString::fromUtf8(":/images/home.jpg")));
         backgroundHomeLabel->setScaledContents(true);
         homePage->setCentralWidget(centralwidget);
@@ -85,8 +85,8 @@ public:
     void retranslateUi(QMainWindow *homePage)
     {
         homePage->setWindowTitle(QCoreApplication::translate("homePage", "MainWindow", nullptr));
-        galleryPushButton->setText(QCoreApplication::translate("homePage", "GALLERY", nullptr));
-        gamePushButton->setText(QCoreApplication::translate("homePage", "play", nullptr));
+        galleryPushButton->setText(QString());
+        gamePushButton->setText(QString());
         backgroundHomeLabel->setText(QString());
     } // retranslateUi
 

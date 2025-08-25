@@ -9,22 +9,24 @@
 #include <QCoreApplication>
 #include <QVariantMap>
 
-class board
+#include "Cell.h"
+
+class Board
 {
 
 private:
-    static board* instance;
+    static Board* instance;
     int id;
     QVector<QVariantMap> data;
-    board();
+    Board();
 
 public:
-    board(const board&) = delete;
-    void operator=(const board&) = delete;
+    Board(const Board&) = delete;
+    void operator=(const Board&) = delete;
 
-    static board* getInstance() {
+    static Board* getInstance() {
         if (!instance)
-            instance = new board();
+            instance = new Board();
         return instance;
     }
 
@@ -59,18 +61,18 @@ public:
                 if (!((rightCh == '\\' && ch == ' ' && leftCh == '/') || (ch == '1' || ch == '2' || ch == '~' || ch == '#')) || ch == '/' || ch == '\\' || ch == '_') continue;
 
                 QVariantMap cell;
-                cell["cellID"] = cellID++;
+                cell["CellID"] = cellID++;
 
                 if (ch == '1')
-                    cell["agentID"] = 1;
+                    cell["CellType"] = Cell::Attacker;
                 else if (ch == '2')
-                    cell["agentID"] = 2;
+                    cell["CellType"] = Cell::Defender;
                 else if (ch == '~')
-                    cell["agentID"] = 3;
+                    cell["CellType"] = Cell::Water;
                 else if (ch == '#')
-                    cell["agentID"] = 4;
+                    cell["CellType"] = Cell::Rock;
                 else
-                    cell["agentID"] = -1;
+                    cell["CellType"] = Cell::Ground;
 
                 result.append(cell);
 

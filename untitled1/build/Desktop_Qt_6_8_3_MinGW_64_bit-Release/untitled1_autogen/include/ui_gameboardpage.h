@@ -45,7 +45,7 @@ public:
         backgroundBoardLabel = new QLabel(centralwidget);
         backgroundBoardLabel->setObjectName("backgroundBoardLabel");
         backgroundBoardLabel->setGeometry(QRect(0, -20, 961, 491));
-        backgroundBoardLabel->setPixmap(QPixmap(QString::fromUtf8(":/images/gallery.jpg")));
+        backgroundBoardLabel->setPixmap(QPixmap(QString::fromUtf8(":/images/mainbg.jpg")));
         backgroundBoardLabel->setScaledContents(true);
         user1Label = new QLabel(centralwidget);
         user1Label->setObjectName("user1Label");
